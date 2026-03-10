@@ -34,12 +34,12 @@ const CategoryShowcase = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-antique-dark/95 via-antique-dark/30 to-transparent"></div>
           <div className="absolute bottom-0 left-0 p-10 w-full text-center z-10">
-            <h3 className="text-4xl md:text-5xl font-serif text-antique-gold mb-4 drop-shadow-md">Party Wares</h3>
+            <h3 className="text-4xl md:text-5xl font-serif text-antique-gold mb-4 drop-shadow-md">Party Wears</h3>
             <p className="text-antique-white/90 font-light mb-8 max-w-sm mx-auto tracking-wide">
               Make a bold statement with our curated evening and gala collections.
             </p>
             <span className="inline-flex items-center text-sm uppercase tracking-widest text-antique-white border-b border-antique-white pb-1 group-hover:text-antique-gold group-hover:border-antique-gold transition-colors">
-              Shop Party Wares <ArrowRight className="w-4 h-4 ml-2" />
+              Shop Party Wears <ArrowRight className="w-4 h-4 ml-2" />
             </span>
           </div>
         </Link>

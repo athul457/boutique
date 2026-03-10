@@ -12,7 +12,7 @@ const Contact = () => {
           <img 
             src="https://images.pexels.com/photos/27103970/pexels-photo-27103970.jpeg" 
             alt="Contact Us Background" 
-            className="w-full h-full object-cover sepia-[.2]"
+            className="w-full h-full object-cover sepia-[.6]"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>

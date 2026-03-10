@@ -25,7 +25,7 @@ const Collections = () => {
     setFilter(currentCategory);
   }, [location.search]);
 
-  const categories = ['All', 'Party Wares', 'Bridals', 'Casuals'];
+  const categories = ['All', 'Party Wears', 'Bridals', 'Casuals'];
   const colors = ['All Colors', ...new Set(collections.map(item => item.color))];
   const sizes = ['All Sizes', ...new Set(collections.flatMap(item => item.sizes))];
   
@@ -60,7 +60,7 @@ const Collections = () => {
           <img 
             src="https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg" 
             alt="Collections Background" 
-            className="w-full h-full object-cover object-center sepia-[.2]"
+            className="w-full h-full object-cover object-center sepia-[.6]"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>

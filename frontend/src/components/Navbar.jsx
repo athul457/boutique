@@ -62,19 +62,19 @@ const Navbar = () => {
 
         {/* Right side: Actions */}
         <div className="flex items-center space-x-3 md:space-x-5 text-white">
-          <div className="hidden sm:flex items-center space-x-2 border-b border-transparent hover:border-antique-gold transition-colors pb-1 cursor-text group relative">
+          <div className="hidden sm:flex items-center space-x-2 bg-white/10 border border-white/20 hover:border-antique-gold/50 transition-all duration-300 px-4 py-1.5 rounded-full cursor-text group relative ml-4">
             <Search className="w-4 h-4 text-gray-300 group-hover:text-antique-gold transition-colors" />
             <input 
               type="text" 
-              placeholder="Search..." 
+              placeholder="Search collections..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-transparent border-none outline-none w-20 md:w-32 text-sm text-white placeholder-gray-400 focus:w-48 transition-all duration-300"
+              className="bg-transparent border-none outline-none w-24 md:w-36 text-xs text-white placeholder-gray-400 focus:w-48 lg:focus:w-64 transition-all duration-300"
             />
             
             {/* Desktop Search Dropdown */}
             {searchQuery && (
-              <div className="absolute top-full right-0 mt-6 w-80 bg-antique-white border border-antique-gold/20 shadow-2xl rounded-sm z-50 max-h-96 overflow-y-auto">
+              <div className="absolute top-full right-0 mt-4 w-80 bg-antique-white border border-antique-gold/20 shadow-2xl rounded-lg z-50 max-h-96 overflow-y-auto overflow-x-hidden">
                 {searchResults.length > 0 ? (
                   <div className="py-2">
                     {searchResults.slice(0, 6).map(item => (
@@ -86,7 +86,7 @@ const Navbar = () => {
                         <img src={item.image} alt={item.name} className="w-12 h-12 object-cover rounded-sm sepia-[.2]" />
                         <div className="flex flex-col text-left">
                           <span className="text-antique-dark text-sm font-bold font-serif">{item.name}</span>
-                          <span className="text-antique-brown text-xs uppercase tracking-widest mt-1">{item.category} &middot; {item.price}</span>
+                          <span className="text-antique-brown text-[10px] uppercase tracking-widest mt-1">{item.category} &middot; {item.price}</span>
                         </div>
                       </div>
                     ))}
