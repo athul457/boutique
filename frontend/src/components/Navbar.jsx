@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { collections } from '../data/collections';
 
 const Navbar = () => {
-  const { cartCount } = useShop();
+  const { cartCount, wishlistCount } = useShop();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
@@ -103,7 +103,15 @@ const Navbar = () => {
           <button onClick={toggleMobileSearch} className="sm:hidden hover:text-antique-gold transition-colors">
             <Search className="w-5 h-5 cursor-pointer" />
           </button>
+          
           <User className="hidden sm:block w-5 h-5 cursor-pointer hover:text-antique-gold transition-colors" />
+          
+          <Link to="/wishlist" className="relative cursor-pointer hover:text-antique-gold transition-colors">
+            <Heart className="w-6 h-6 sm:w-5 sm:h-5" />
+            <span className="absolute -top-1 -right-2 sm:-top-2 sm:-right-2 bg-antique-gold text-antique-dark text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+              {wishlistCount}
+            </span>
+          </Link>
           
           <Link to="/cart" className="relative cursor-pointer hover:text-antique-gold transition-colors pl-2">
             <ShoppingBag className="w-6 h-6 sm:w-5 sm:h-5" />

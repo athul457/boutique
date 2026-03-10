@@ -4,11 +4,11 @@ import { collections } from '../data/collections';
 import { useShop } from '../context/ShopContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { ChevronRight, Star, Truck, ShieldCheck, RotateCcw, Minus, Plus } from 'lucide-react';
+import { ChevronRight, Star, Truck, ShieldCheck, RotateCcw, Minus, Plus, Heart } from 'lucide-react';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { addToCart } = useShop();
+  const { addToCart, addToWishlist } = useShop();
   const [product, setProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
@@ -159,10 +159,10 @@ const ProductDetails = () => {
                   
                   <div className="flex flex-col flex-grow gap-3">
                     <button 
-                      onClick={() => addToCart({ ...product, selectedSize, selectedColor, quantity })}
-                      className="w-full bg-antique-dark text-antique-white h-14 uppercase tracking-[0.3em] text-xs font-bold hover:bg-antique-gold hover:text-white transition-all duration-500 shadow-xl active:scale-[0.98]"
+                      onClick={() => addToWishlist(product)}
+                      className="w-full bg-antique-dark text-antique-white h-14 uppercase tracking-[0.3em] text-xs font-bold hover:bg-antique-gold hover:text-white transition-all duration-500 shadow-xl active:scale-[0.98] flex items-center justify-center gap-2"
                     >
-                      Induct into Wardrobe
+                      <Heart className="w-4 h-4" /> Add to Wishlist
                     </button>
                     <Link 
                       to="/cart"

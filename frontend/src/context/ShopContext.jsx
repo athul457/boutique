@@ -5,6 +5,7 @@ const ShopContext = createContext();
 
 export const ShopProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const [toastMessage, setToastMessage] = useState(null);
 
   // Auto-hide toast after 3 seconds
@@ -16,7 +17,6 @@ export const ShopProvider = ({ children }) => {
       return () => clearTimeout(timer);
     }
   }, [toastMessage]);
-
   const addToCart = (product) => {
     if (!product) return;
     
@@ -57,8 +57,29 @@ export const ShopProvider = ({ children }) => {
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
+  const addToWishlist = (product) => {
+    if (!product) return;
+    setWishlist(prev => {
+      if (prev.find(item => item.id === product.id)) {
+        setToastMessage(`${product.name} is already in your wishlist`);
+        return prev;
+      }
+      setToastMessage(`Added ${product.name} to wishlist`);
+      return [...prev, product];
+    });
+  };
+
+  const removeFromWishlist = (id) => {
+    setWishlist(prev => prev.filter(item => item.id !== id));
+  };
+
+  const wishlistCount = wishlist.length;
+
   return (
-    <ShopContext.Provider value={{ cartItems, cartCount, addToCart, removeFromCart, updateQuantity, clearCart }}>
+    <ShopContext.Provider value={{ 
+      cartItems, cartCount, addToCart, removeFromCart, updateQuantity, clearCart,
+      wishlist, wishlistCount, addToWishlist, removeFromWishlist
+    }}>
       {children}
       
       {/* Global Toast Notification */}

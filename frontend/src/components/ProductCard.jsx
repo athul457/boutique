@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useShop } from '../context/ShopContext';
 
-const ProductCard = ({ item, addToCart }) => {
+const ProductCard = ({ item }) => {
+  const { addToWishlist } = useShop();
+  
   return (
     <div className="group cursor-pointer flex flex-col h-full rounded-[10px] overflow-hidden border border-antique-gold/10 hover:border-antique-gold/30 transition-all duration-500 min-w-full sm:min-w-0 snap-center">
       <Link to={`/product/${item.id}`} className="relative overflow-hidden bg-antique-white aspect-[3/4] shadow-sm flex-grow block">
@@ -27,11 +30,11 @@ const ProductCard = ({ item, addToCart }) => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                addToCart({ ...item, selectedSize: item.sizes[0], selectedColor: item.color });
+                addToWishlist(item);
               }}
               className="bg-antique-dark/95 text-antique-white px-4 py-3 border border-white/10 text-[10px] uppercase tracking-[0.2em] font-bold shadow-xl hover:bg-antique-gold transition-colors duration-300 active:scale-95"
             >
-              Quick Add
+              Add to Wishlist
             </button>
           </div>
         </div>
