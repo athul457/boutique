@@ -7,7 +7,6 @@ const Hero = () => {
     <section className="relative h-[100vh] min-h-[400px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img 
-          // src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=2000" 
           src="/heroImage.png" 
           alt="Golden Architecture" 
           className="w-full h-full object-cover object-top object-center"

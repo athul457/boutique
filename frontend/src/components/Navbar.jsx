@@ -62,7 +62,7 @@ const Navbar = () => {
 
         {/* Right side: Actions */}
         <div className="flex items-center space-x-3 md:space-x-5 text-white">
-          <div className="hidden sm:flex items-center space-x-2 bg-white/10 border border-white/20 hover:border-antique-gold/50 transition-all duration-300 px-4 py-1.5 rounded-full cursor-text group relative ml-4">
+          <div className="hidden sm:flex items-center space-x-2 border-b border-white/30 hover:border-antique-gold/50 focus-within:border-antique-gold transition-all duration-300 pb-1 cursor-text group relative ml-6">
             <Search className="w-4 h-4 text-gray-300 group-hover:text-antique-gold transition-colors" />
             <input 
               type="text" 
@@ -74,7 +74,7 @@ const Navbar = () => {
             
             {/* Desktop Search Dropdown */}
             {searchQuery && (
-              <div className="absolute top-full right-0 mt-4 w-80 bg-antique-white border border-antique-gold/20 shadow-2xl rounded-lg z-50 max-h-96 overflow-y-auto overflow-x-hidden">
+              <div className="absolute top-full right-0 mt-6 w-80 bg-antique-white border border-antique-gold/20 shadow-2xl rounded-sm z-50 max-h-96 overflow-y-auto overflow-x-hidden">
                 {searchResults.length > 0 ? (
                   <div className="py-2">
                     {searchResults.slice(0, 6).map(item => (
