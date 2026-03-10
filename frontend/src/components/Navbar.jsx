@@ -50,7 +50,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-bold text-white">
+          <div className="hidden md:flex space-x-8 text-xs uppercase tracking-widest font-bold text-white">
             <Link to="/" className="hover:text-antique-gold transition-colors">Home</Link>
             <Link to="/collections" className="hover:text-antique-gold transition-colors">Collections</Link>
             <a href="/#new-arrivals" className="hover:text-antique-gold transition-colors">New Arrivals</a>
@@ -165,7 +165,7 @@ const Navbar = () => {
             onClick={toggleMobileMenu}
           ></div>
           <div className="absolute top-20 left-0 w-full bg-antique-dark z-20 border-b border-antique-gold/20 shadow-xl md:hidden animate-in slide-in-from-top-4 duration-300">
-            <div className="flex flex-col px-6 py-4 space-y-4 text-sm uppercase tracking-widest font-bold text-white">
+            <div className="flex flex-col px-6 py-4 space-y-4 text-xs uppercase tracking-widest font-bold text-white">
             <Link to="/" onClick={toggleMobileMenu} className="hover:text-antique-gold transition-colors py-2 border-b border-white/10">Home</Link>
             <Link to="/collections" onClick={toggleMobileMenu} className="hover:text-antique-gold transition-colors py-2 border-b border-white/10">Collections</Link>
             <a href="/#new-arrivals" onClick={toggleMobileMenu} className="hover:text-antique-gold transition-colors py-2 border-b border-white/10">New Arrivals</a>
