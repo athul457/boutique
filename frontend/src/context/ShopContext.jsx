@@ -1,38 +1,57 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { ShoppingBag } from 'lucide-react';
 
 const ShopContext = createContext();
 
 export const ShopProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [toastMessage, setToastMessage] = useState(null);
+
+  // Auto-hide toast after 3 seconds
+  useEffect(() => {
+    if (toastMessage) {
+      const timer = setTimeout(() => {
+        setToastMessage(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toastMessage]);
 
   const addToCart = (product) => {
     if (!product) return;
+    
+    const cartItemId = `${product.id}-${product.selectedSize || 'default'}-${product.selectedColor || 'default'}`;
+    
     setCartItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === product.id);
+      const existingItem = prevItems.find(item => item.cartItemId === cartItemId);
       if (existingItem) {
         return prevItems.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.cartItemId === cartItemId ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prevItems, { ...product, quantity: 1 }];
+      return [...prevItems, { ...product, cartItemId, quantity: 1 }];
     });
+    
+    // Trigger toast notification
+    setToastMessage(`Added ${product.name} to your bag`);
   };
 
-  const removeFromCart = (productId) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+  const removeFromCart = (cartItemId) => {
+    setCartItems(prevItems => prevItems.filter(item => item.cartItemId !== cartItemId));
   };
 
-  const updateQuantity = (productId, newQuantity) => {
+  const updateQuantity = (cartItemId, newQuantity) => {
     if (newQuantity < 1) {
-      removeFromCart(productId);
+      removeFromCart(cartItemId);
       return;
     }
     setCartItems(prevItems =>
       prevItems.map(item =>
-        item.id === productId ? { ...item, quantity: newQuantity } : item
+        item.cartItemId === cartItemId ? { ...item, quantity: newQuantity } : item
       )
     );
   };
+
 
   const clearCart = () => setCartItems([]);
 
@@ -41,6 +60,16 @@ export const ShopProvider = ({ children }) => {
   return (
     <ShopContext.Provider value={{ cartItems, cartCount, addToCart, removeFromCart, updateQuantity, clearCart }}>
       {children}
+      
+      {/* Global Toast Notification */}
+      <div 
+        className={`fixed bottom-32 md:bottom-8 left-1/2 transform -translate-x-1/2 z-[100] transition-all duration-500 pointer-events-none flex items-center gap-3 bg-antique-dark text-antique-white px-6 py-4 rounded-sm shadow-2xl border border-antique-gold/30 ${
+          toastMessage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
+        <ShoppingBag className="w-5 h-5 text-antique-gold" />
+        <span className="text-sm font-bold tracking-wide">{toastMessage}</span>
+      </div>
     </ShopContext.Provider>
   );
 };

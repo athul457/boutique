@@ -45,14 +45,31 @@ const Checkout = () => {
     <div className="bg-antique-white min-h-screen flex flex-col">
       <Navbar />
       
-      <main className="flex-grow pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto w-full">
-        <div className="flex items-center mb-12">
-          <Link to="/cart" className="text-antique-brown hover:text-antique-gold transition-colors mr-4">
-            <ArrowLeft className="w-6 h-6" />
-          </Link>
-          <h1 className="text-4xl font-serif text-antique-dark border-b border-antique-gold/20 pb-2 flex-grow">
-            Checkout
+      {/* Page Header */}
+      <div className="relative h-[40vh] min-h-[300px] flex items-center justify-center pt-20">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.pexels.com/photos/5632346/pexels-photo-5632346.jpeg?auto=format&fit=crop&q=80&w=2000" 
+            alt="Checkout Background" 
+            className="w-full h-full object-cover object-center sepia-[.2]"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-serif text-white mb-4 drop-shadow-lg">
+            Secure <span className="text-antique-gold italic font-light">Checkout</span>
           </h1>
+          <p className="text-gray-200 uppercase tracking-[0.3em] text-sm">Complete your purchase</p>
+        </div>
+      </div>
+
+      <main className="flex-grow py-16 px-6 md:px-12 max-w-7xl mx-auto w-full">
+        <div className="mb-8">
+          <Link to="/cart" className="inline-flex items-center text-antique-brown hover:text-antique-gold transition-colors font-serif italic text-lg">
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Shopping Bag
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

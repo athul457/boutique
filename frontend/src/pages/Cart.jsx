@@ -17,10 +17,26 @@ const Cart = () => {
     <div className="bg-antique-white min-h-screen flex flex-col">
       <Navbar />
       
-      <main className="flex-grow pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto w-full">
-        <h1 className="text-4xl md:text-5xl font-serif text-antique-dark mb-12 border-b border-antique-gold/20 pb-4">
-          Shopping Bag
-        </h1>
+      {/* Page Header */}
+      <div className="relative h-[40vh] min-h-[300px] flex items-center justify-center pt-20">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=format&fit=crop&q=80&w=2000" 
+            alt="Shopping Bag Background" 
+            className="w-full h-full object-cover object-center sepia-[.2]"
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-serif text-white mb-4 drop-shadow-lg">
+            Shopping <span className="text-antique-gold italic font-light">Bag</span>
+          </h1>
+          <p className="text-gray-200 uppercase tracking-[0.3em] text-sm">Review your selections</p>
+        </div>
+      </div>
+
+      <main className="flex-grow py-16 px-6 md:px-12 max-w-7xl mx-auto w-full">
 
         {cartItems.length === 0 ? (
           <div className="text-center py-20 bg-white/50 rounded-2xl border border-antique-gold/10 shadow-sm">
@@ -39,7 +55,7 @@ const Cart = () => {
             {/* Cart Items List */}
             <div className="lg:col-span-2 space-y-8">
               {cartItems.map((item) => (
-                <div key={item.id} className="flex gap-6 bg-white p-6 rounded-xl shadow-sm border border-antique-gold/5 group">
+                <div key={item.cartItemId} className="flex gap-6 bg-white p-6 rounded-xl shadow-sm border border-antique-gold/5 group">
                   <div className="w-24 h-32 md:w-32 md:h-40 flex-shrink-0 overflow-hidden rounded-lg border border-antique-gold/10">
                     <img 
                       src={item.image} 
@@ -53,19 +69,33 @@ const Cart = () => {
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="text-lg md:text-xl font-serif text-antique-dark">{item.name}</h3>
                         <button 
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => removeFromCart(item.cartItemId)}
                           className="text-antique-brown hover:text-red-500 transition-colors p-1"
                         >
                           <Trash2 className="w-5 h-5" />
                         </button>
                       </div>
+                      
+                      {/* Show Selected Attributes */}
+                      <div className="flex flex-col gap-1 mb-3">
+                        <p className="text-antique-brown text-sm">
+                          <span className="font-bold">Size:</span> {item.selectedSize || 'Standard'}
+                        </p>
+                        {item.color && (
+                          <div className="flex items-center gap-2">
+                            <span className="text-antique-brown text-sm font-bold">Color:</span>
+                            <span className="text-antique-brown text-sm">{item.selectedColor || item.color}</span>
+                          </div>
+                        )}
+                      </div>
+
                       <p className="text-antique-gold font-bold mb-4">{item.price}</p>
                     </div>
 
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center border border-antique-gold/30 rounded-md">
                         <button 
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
                           className="p-2 hover:bg-antique-gold/10 transition-colors text-antique-dark"
                         >
                           <Minus className="w-4 h-4" />
@@ -74,7 +104,7 @@ const Cart = () => {
                           {item.quantity}
                         </span>
                         <button 
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
                           className="p-2 hover:bg-antique-gold/10 transition-colors text-antique-dark"
                         >
                           <Plus className="w-4 h-4" />

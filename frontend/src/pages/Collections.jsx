@@ -128,37 +128,70 @@ const Collections = () => {
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredCollections.map((item) => (
-            <div key={item.id} className="group cursor-pointer">
-              <div className="relative overflow-hidden mb-4 bg-antique-white border border-antique-gold/10 aspect-[3/4] shadow-sm hover:shadow-md transition-shadow">
-                <img 
-                  src={item.image} 
-                  alt={item.name}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 sepia-[.2]"
-                />
-                
-                <div className="absolute top-4 left-4 bg-antique-white/90 px-3 py-1 text-[10px] uppercase tracking-widest text-antique-dark font-bold shadow-sm">
-                  {item.category}
-                </div>
+          {filteredCollections.map((item) => {
+            // Local state for each product card
+            const [selectedSize, setSelectedSize] = useState(item.sizes[0]);
+            const [selectedColor, setSelectedColor] = useState(item.color);
 
-                <div className="absolute inset-0 bg-antique-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            return (
+              <div key={item.id} className="group cursor-pointer flex flex-col h-full">
+                <div className="relative overflow-hidden mb-4 bg-antique-white border border-antique-gold/10 aspect-[3/4] shadow-sm hover:shadow-md transition-shadow flex-grow">
+                  <img 
+                    src={item.image} 
+                    alt={item.name}
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 sepia-[.2]"
+                  />
+                  
+                  <div className="absolute top-4 left-4 bg-antique-white/90 px-3 py-1 text-[10px] uppercase tracking-widest text-antique-dark font-bold shadow-sm">
+                    {item.category}
+                  </div>
+
+                  <div className="absolute inset-0 bg-antique-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  
+                  {/* Selection & Add to Cart Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-[120%] group-hover:translate-y-0 transition-transform duration-300 bg-white/95 backdrop-blur-sm border-t border-antique-gold/20 flex flex-col gap-3">
+                    <div className="flex gap-2 w-full">
+                      <select 
+                        value={selectedSize}
+                        onChange={(e) => setSelectedSize(e.target.value)}
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-1/2 bg-antique-white border border-antique-gold/30 text-antique-dark text-xs p-2 outline-none focus:border-antique-gold rounded-sm appearance-none cursor-pointer"
+                        title="Select Size"
+                      >
+                        {item.sizes.map(s => <option key={s} value={s}>{s}</option>)}
+                      </select>
+                      
+                      <select 
+                        value={selectedColor}
+                        onChange={(e) => setSelectedColor(e.target.value)}
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-1/2 bg-antique-white border border-antique-gold/30 text-antique-dark text-xs p-2 outline-none focus:border-antique-gold rounded-sm appearance-none cursor-pointer truncate"
+                        title="Select Color"
+                      >
+                        <option value={item.color}>{item.color}</option>
+                        {/* If the boutique offered more colors per item, they would go here */}
+                      </select>
+                    </div>
+
+                    <button 
+                      onClick={(e) => { 
+                        e.stopPropagation(); 
+                        addToCart({ ...item, selectedSize, selectedColor }); 
+                      }}
+                      className="w-full bg-antique-dark text-antique-white py-3 text-sm uppercase tracking-widest hover:bg-antique-gold hover:text-white transition-colors shadow-lg"
+                    >
+                      Quick Add
+                    </button>
+                  </div>
+                </div>
                 
-                <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <button 
-                    onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-                    className="w-full bg-antique-dark text-antique-white py-3 text-sm uppercase tracking-widest hover:bg-antique-gold hover:text-white transition-colors shadow-lg"
-                  >
-                    Quick Add
-                  </button>
+                <div className="text-center mt-auto">
+                  <h3 className="text-base font-serif mb-1 group-hover:text-antique-gold transition-colors text-antique-dark truncate px-2">{item.name}</h3>
+                  <p className="text-antique-brown text-sm font-light italic">{item.price}</p>
                 </div>
               </div>
-              
-              <div className="text-center">
-                <h3 className="text-base font-serif mb-1 group-hover:text-antique-gold transition-colors text-antique-dark truncate px-2">{item.name}</h3>
-                <p className="text-antique-brown text-sm font-light italic">{item.price}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </main>
 
