@@ -58,7 +58,7 @@ const Collections = () => {
           <img 
             src="https://images.pexels.com/photos/1462637/pexels-photo-1462637.jpeg" 
             alt="Collections Background" 
-            className="w-full h-full object-cover sepia-[.2]"
+            className="w-full h-full object-cover object-center sepia-[.2]"
           />
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>

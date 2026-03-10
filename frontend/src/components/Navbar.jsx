@@ -1,14 +1,37 @@
 import React, { useState } from 'react';
 import { Search, ShoppingBag, Heart, User, Menu, X } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { collections } from '../data/collections';
 
 const Navbar = () => {
   const { cartCount } = useShop();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    if (!isMobileMenuOpen) setIsMobileSearchOpen(false);
+  };
+
+  const toggleMobileSearch = () => {
+    setIsMobileSearchOpen(!isMobileSearchOpen);
+    if (!isMobileSearchOpen) setIsMobileMenuOpen(false);
+  };
+
+  const searchResults = searchQuery
+    ? collections.filter(item => 
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        item.category.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
+
+  const handleSearchResultClick = () => {
+    setSearchQuery('');
+    setIsMobileSearchOpen(false);
+    navigate('/collections');
   };
 
   return (
@@ -38,16 +61,47 @@ const Navbar = () => {
 
         {/* Right side: Actions */}
         <div className="flex items-center space-x-3 md:space-x-5 text-white">
-          <div className="hidden sm:flex items-center space-x-2 border-b border-transparent hover:border-antique-gold transition-colors pb-1 cursor-text group">
+          <div className="hidden sm:flex items-center space-x-2 border-b border-transparent hover:border-antique-gold transition-colors pb-1 cursor-text group relative">
             <Search className="w-4 h-4 text-gray-300 group-hover:text-antique-gold transition-colors" />
             <input 
               type="text" 
               placeholder="Search..." 
-              className="bg-transparent border-none outline-none w-20 md:w-32 text-sm text-white placeholder-gray-400 focus:w-40 transition-all duration-300"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="bg-transparent border-none outline-none w-20 md:w-32 text-sm text-white placeholder-gray-400 focus:w-48 transition-all duration-300"
             />
+            
+            {/* Desktop Search Dropdown */}
+            {searchQuery && (
+              <div className="absolute top-full right-0 mt-6 w-80 bg-antique-white border border-antique-gold/20 shadow-2xl rounded-sm z-50 max-h-96 overflow-y-auto">
+                {searchResults.length > 0 ? (
+                  <div className="py-2">
+                    {searchResults.slice(0, 6).map(item => (
+                      <div 
+                        key={item.id} 
+                        onClick={handleSearchResultClick}
+                        className="flex items-center gap-4 px-4 py-3 hover:bg-antique-gold/10 transition-colors border-b border-antique-gold/10 last:border-0 cursor-pointer"
+                      >
+                        <img src={item.image} alt={item.name} className="w-12 h-12 object-cover rounded-sm sepia-[.2]" />
+                        <div className="flex flex-col text-left">
+                          <span className="text-antique-dark text-sm font-bold font-serif">{item.name}</span>
+                          <span className="text-antique-brown text-xs uppercase tracking-widest mt-1">{item.category} &middot; {item.price}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="px-4 py-8 text-center text-sm text-antique-brown font-light italic">
+                    No results found for "{searchQuery}"
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           
-          <Search className="sm:hidden w-5 h-5 cursor-pointer hover:text-antique-gold transition-colors" />
+          <button onClick={toggleMobileSearch} className="sm:hidden hover:text-antique-gold transition-colors">
+            <Search className="w-5 h-5 cursor-pointer" />
+          </button>
           <User className="hidden sm:block w-5 h-5 cursor-pointer hover:text-antique-gold transition-colors" />
           
           <Link to="/cart" className="relative cursor-pointer hover:text-antique-gold transition-colors pl-2">
@@ -58,6 +112,50 @@ const Navbar = () => {
           </Link>
         </div>
       </nav>
+
+      {/* Mobile Search Dropdown */}
+      {isMobileSearchOpen && (
+        <div className="absolute top-20 left-0 w-full bg-antique-dark z-20 border-b border-antique-gold/20 shadow-xl md:hidden animate-in slide-in-from-top-4 duration-300 px-6 py-4">
+          <div className="flex items-center space-x-2 border-b border-antique-gold pb-2">
+            <Search className="w-5 h-5 text-antique-gold" />
+            <input 
+              type="text" 
+              placeholder="Search collections..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              autoFocus
+              className="bg-transparent border-none outline-none flex-grow text-base text-white placeholder-gray-400"
+            />
+            <button onClick={toggleMobileSearch}><X className="w-5 h-5 text-gray-400 hover:text-white" /></button>
+          </div>
+
+          {searchQuery && (
+            <div className="mt-4 max-h-80 overflow-y-auto bg-antique-white rounded-sm">
+              {searchResults.length > 0 ? (
+                <div className="py-2">
+                  {searchResults.slice(0, 5).map(item => (
+                    <div 
+                      key={item.id} 
+                      onClick={handleSearchResultClick}
+                      className="flex items-center gap-4 px-4 py-3 hover:bg-antique-gold/10 transition-colors border-b border-antique-gold/10 last:border-0 cursor-pointer"
+                    >
+                      <img src={item.image} alt={item.name} className="w-10 h-10 object-cover rounded-sm sepia-[.2]" />
+                      <div className="flex flex-col text-left">
+                        <span className="text-antique-dark text-sm font-bold font-serif">{item.name}</span>
+                        <span className="text-antique-brown text-xs uppercase tracking-widest">{item.price}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="px-4 py-6 text-center text-sm text-antique-brown font-light italic">
+                  No results found for "{searchQuery}"
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Mobile Menu Dropdown & Backdrop */}
       {isMobileMenuOpen && (
