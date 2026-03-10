@@ -1,19 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { collections } from '../data/collections';
 import { useShop } from '../context/ShopContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ProductCard from '../components/ProductCard';
 import { ChevronRight, Star, Truck, ShieldCheck, RotateCcw, Minus, Plus, Heart } from 'lucide-react';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { addToCart, addToWishlist } = useShop();
+  const { wishlist, addToCart, addToWishlist, removeFromWishlist } = useShop();
   const [product, setProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef(null);
+
+  const isWishlisted = product ? wishlist.some(item => item.id === product.id) : false;
+
+  const toggleWishlist = (e) => {
+    e.preventDefault();
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const scrollPosition = scrollRef.current.scrollLeft;
+      const itemWidth = scrollRef.current.clientWidth;
+      const newIndex = Math.round(scrollPosition / itemWidth);
+      setActiveIndex(newIndex);
+    }
+  };
 
   useEffect(() => {
     const foundProduct = collections.find(item => item.id === parseInt(id));
@@ -40,8 +63,8 @@ const ProductDetails = () => {
   return (
     <div className="min-h-screen bg-antique-white text-antique-dark font-sans flex flex-col">
       {/* Top Header Section for Navbar Contrast */}
-      <div className="relative h-64 bg-antique-dark overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 z-0 opacity-40">
+      <div className="relative h-64 bg-antique-dark">
+        <div className="absolute inset-0 z-0 opacity-40 overflow-hidden">
           <img 
             src={product.image} 
             alt="" 
@@ -49,9 +72,12 @@ const ProductDetails = () => {
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
-        <Navbar />
-        <div className="relative z-10 text-center mt-12">
-          <h2 className="text-antique-gold font-serif text-2xl uppercase tracking-[0.3em] opacity-80">Product Detail</h2>
+        
+        <div className="relative z-10 h-full flex flex-col">
+          <Navbar />
+          <div className="flex-grow flex items-center justify-center">
+            <h2 className="text-antique-gold font-serif text-2xl uppercase tracking-[0.3em] opacity-80 mt-8">Product Detail</h2>
+          </div>
         </div>
       </div>
       
@@ -70,13 +96,25 @@ const ProductDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           
           {/* Image Gallery */}
-          <div className="flex justify-center flex-col">
-            <div className="aspect-[4/5] max-w-sm md:max-w-md w-full overflow-hidden bg-white border border-antique-gold/10 rounded-sm shadow-sm group mx-auto">
+          <div className="flex justify-center flex-col relative">
+            <div className="aspect-[4/5] max-w-sm md:max-w-md w-full overflow-hidden bg-white border border-antique-gold/10 rounded-sm shadow-sm group mx-auto relative">
               <img 
                 src={product.image} 
                 alt={product.name} 
                 className="w-full h-full object-cover sepia-[.1] group-hover:scale-105 transition-transform duration-1000"
               />
+              
+              {/* Wishlist Toggle Heart */}
+              <button 
+                onClick={toggleWishlist}
+                className="absolute top-6 right-6 z-10 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:scale-110 transition-all duration-300 group/heart"
+              >
+                <Heart 
+                  className={`w-6 h-6 transition-colors duration-300 ${
+                    isWishlisted ? 'fill-red-500 text-red-500' : 'text-antique-brown group-hover/heart:text-red-400'
+                  }`} 
+                />
+              </button>
             </div>
           </div>
 
@@ -159,10 +197,10 @@ const ProductDetails = () => {
                   
                   <div className="flex flex-col flex-grow gap-3">
                     <button 
-                      onClick={() => addToWishlist(product)}
-                      className="w-full bg-antique-dark text-antique-white h-14 uppercase tracking-[0.3em] text-xs font-bold hover:bg-antique-gold hover:text-white transition-all duration-500 shadow-xl active:scale-[0.98] flex items-center justify-center gap-2"
+                      onClick={() => addToCart({ ...product, selectedSize, selectedColor, quantity })}
+                      className="w-full bg-antique-dark text-antique-white h-14 uppercase tracking-[0.3em] text-xs font-bold hover:bg-antique-gold hover:text-white transition-all duration-500 shadow-xl active:scale-[0.98]"
                     >
-                      <Heart className="w-4 h-4" /> Add to Wishlist
+                      Induct into Wardrobe
                     </button>
                     <Link 
                       to="/cart"
@@ -233,25 +271,28 @@ const ProductDetails = () => {
               <h2 className="text-3xl font-serif text-antique-dark mb-4 italic">You might also treasure</h2>
               <div className="w-20 h-px bg-antique-gold mx-auto opacity-40"></div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div 
+              ref={scrollRef}
+              onScroll={handleScroll}
+              className="flex overflow-x-auto sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 snap-x snap-mandatory hide-scroll-bar -mx-6 px-6 sm:mx-0 sm:px-0"
+            >
               {relatedProducts.map((item) => (
-                <Link 
-                  key={item.id} 
-                  to={`/product/${item.id}`}
-                  className="group flex flex-col"
-                >
-                  <div className="aspect-[3/4] overflow-hidden bg-antique-white border border-antique-gold/10 mb-4 shadow-sm hover:shadow-md transition-shadow relative">
-                    <img 
-                      src={item.image} 
-                      alt={item.name} 
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 sepia-[.2]" 
-                    />
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-sm font-serif mb-1 group-hover:text-antique-gold transition-colors">{item.name}</h3>
-                    <p className="text-antique-brown text-xs font-light italic">{item.price}</p>
-                  </div>
-                </Link>
+                <div key={item.id} className="min-w-full sm:min-w-0 snap-center">
+                  <ProductCard item={item} addToCart={addToCart} />
+                </div>
+              ))}
+            </div>
+
+            {/* Pagination dots (Mobile only) */}
+            <div className="flex justify-center items-center space-x-2 mt-4 sm:hidden">
+              {relatedProducts.map((_, index) => (
+                <div 
+                  key={index}
+                  className={`transition-all duration-300 rounded-full ${
+                    index === activeIndex ? 'w-6 h-1.5 bg-antique-gold' : 'w-1.5 h-1.5 bg-antique-gold/30'
+                  }`}
+                />
               ))}
             </div>
           </div>

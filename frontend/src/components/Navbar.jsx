@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="absolute top-0 w-full z-20 px-4 md:px-12 py-6 flex justify-between items-center bg-transparent">
+      <nav className="absolute top-0 w-full z-50 px-4 md:px-12 py-6 flex justify-between items-center bg-transparent">
         {/* Left side: Logo & Navigation */}
         <div className="flex items-center">
           {/* Mobile menu icon */}
@@ -124,7 +124,7 @@ const Navbar = () => {
 
       {/* Mobile Search Dropdown */}
       {isMobileSearchOpen && (
-        <div className="absolute top-20 left-0 w-full bg-antique-dark z-20 border-b border-antique-gold/20 shadow-xl md:hidden animate-in slide-in-from-top-4 duration-300 px-6 py-4">
+        <div className="absolute top-20 left-0 w-full bg-antique-dark z-[110] border-b border-antique-gold/20 shadow-xl md:hidden animate-in slide-in-from-top-4 duration-300 px-6 py-4">
           <div className="flex items-center space-x-2 border-b border-antique-gold pb-2">
             <Search className="w-5 h-5 text-antique-gold" />
             <input 
@@ -170,10 +170,10 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <>
           <div 
-            className="fixed inset-0 z-10 backdrop-blur-md bg-black/30 md:hidden animate-in fade-in duration-300 pointer-events-auto"
+            className="fixed inset-0 z-[100] backdrop-blur-md bg-black/30 md:hidden animate-in fade-in duration-300 pointer-events-auto"
             onClick={toggleMobileMenu}
           ></div>
-          <div className="absolute top-20 left-0 w-full bg-antique-dark z-20 border-b border-antique-gold/20 shadow-xl md:hidden animate-in slide-in-from-top-4 duration-300">
+          <div className="absolute top-20 left-0 w-full bg-antique-dark z-[110] border-b border-antique-gold/20 shadow-xl md:hidden animate-in slide-in-from-top-4 duration-300">
             <div className="flex flex-col px-6 py-4 space-y-4 text-xs uppercase tracking-widest font-bold text-white">
             <Link to="/" onClick={toggleMobileMenu} className="hover:text-antique-gold transition-colors py-2 border-b border-white/10">Home</Link>
             <Link to="/collections" onClick={toggleMobileMenu} className="hover:text-antique-gold transition-colors py-2 border-b border-white/10">Collections</Link>
