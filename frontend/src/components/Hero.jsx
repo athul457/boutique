@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="relative h-[100vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[100vh] min-h-[350px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
           src="/heroImage.png" 
