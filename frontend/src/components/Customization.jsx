@@ -3,11 +3,11 @@ import { ArrowRight } from 'lucide-react';
 
 const Customization = () => {
   return (
-    <section className="py-24 px-6 md:px-12 bg-white overflow-hidden relative border-y border-antique-gold/10">
+    <section id="customization" className="py-24 px-6 md:px-12 bg-white overflow-hidden relative border-y border-antique-gold/10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
         {/* Image Content */}
-        <div className="w-full md:w-1/2 relative">
-          <div className="aspect-[4/5] overflow-hidden rounded-sm shadow-2xl relative z-10 border border-antique-gold/20">
+        <div className="w-full md:w-1/2 relative flex justify-center md:block">
+          <div className="aspect-[3/4] md:aspect-[4/5] w-[80%] md:w-full max-w-sm md:max-w-none overflow-hidden rounded-sm shadow-2xl relative z-10 border border-antique-gold/20">
             <img 
               src="/customization.jpg" 
               alt="Tailoring & Customization" 
@@ -15,7 +15,7 @@ const Customization = () => {
             />
           </div>
           {/* Decorative Back Element */}
-          <div className="absolute -top-6 -left-6 w-full h-full border-2 border-antique-gold/10 -z-0"></div>
+          <div className="absolute top-2 left-6 w-[80%] max-w-sm h-full border-2 border-antique-gold/10 -z-0 md:-top-6 md:-left-6 md:w-full md:max-w-none md:border-2"></div>
           <div className="absolute -bottom-10 -right-10 text-9xl font-serif text-antique-gold/5 select-none pointer-events-none">
             Bespoke
           </div>

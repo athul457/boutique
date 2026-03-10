@@ -1,5 +1,6 @@
 import React from 'react';
 import { BadgePercent } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PromoCard = () => {
   return (
@@ -20,13 +21,19 @@ const PromoCard = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto">
-            <button className="px-8 py-4 rounded border border-antique-gold text-antique-white uppercase tracking-widest text-xs font-bold hover:bg-antique-gold hover:text-antique-dark transition-colors shadow-sm w-full sm:w-auto">
+            <a 
+              href="/#new-arrivals" 
+              className="px-8 py-4 rounded border border-antique-gold text-antique-white uppercase tracking-widest text-xs font-bold hover:bg-antique-gold hover:text-antique-dark transition-colors shadow-sm w-full sm:w-auto inline-block text-center"
+            >
               Explore New Arrivals
-            </button>
+            </a>
             
-            <button className="px-10 py-4 rounded bg-antique-gold text-antique-dark uppercase tracking-widest text-xs font-bold hover:bg-antique-goldDark hover:text-white transition-colors shadow-lg w-full sm:w-auto">
+            <Link 
+              to="/collections" 
+              className="px-10 py-4 rounded bg-antique-gold text-antique-dark uppercase tracking-widest text-xs font-bold hover:bg-antique-goldDark hover:text-white transition-colors shadow-lg w-full sm:w-auto inline-block text-center"
+            >
               Shop Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>

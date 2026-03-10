@@ -13,6 +13,7 @@ body {
 /* Custom scrollbar for an elegant touch */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -26,4 +27,15 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #997A3D; /* antique-goldDark */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll-bar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

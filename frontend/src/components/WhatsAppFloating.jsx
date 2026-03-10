@@ -11,10 +11,10 @@ const WhatsAppFloating = () => {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-end">
       {/* Chat Window */}
       {isOpen && (
-        <div className="mb-4 w-80 md:w-96 bg-white rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+        <div className="mb-4 w-[calc(100vw-2rem)] md:w-96 bg-white rounded-2xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
           <div className="bg-[#075E54] p-4 text-white flex justify-between items-center">
             <div className="flex items-center space-x-3">
@@ -73,13 +73,13 @@ const WhatsAppFloating = () => {
         onClick={toggleChat}
         className={`${
           isOpen ? 'bg-gray-200 text-gray-600' : 'bg-[#25D366] text-white'
-        } w-16 h-16 flex items-center justify-center rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 group relative`}
+        } w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 group relative`}
         aria-label="Contact us on WhatsApp"
       >
         {!isOpen && (
           <>
             {/* Tooltip */}
-            <span className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-antique-dark text-antique-white text-xs py-2 px-4 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl border border-antique-gold/20">
+            <span className="hidden md:block absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-antique-dark text-antique-white text-xs py-2 px-4 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl border border-antique-gold/20">
               Start Conversation
               {/* Tooltip Arrow */}
               <span className="absolute left-full top-1/2 -translate-y-1/2 border-8 border-transparent border-l-antique-dark"></span>
@@ -91,7 +91,7 @@ const WhatsAppFloating = () => {
             </span>
           </>
         )}
-        {isOpen ? <X size={28} /> : <i className="fa-brands fa-whatsapp text-3xl"></i>}
+        {isOpen ? <X size={24} className="md:w-7 md:h-7" /> : <i className="fa-brands fa-whatsapp text-2xl md:text-3xl"></i>}
       </button>
     </div>
   );
