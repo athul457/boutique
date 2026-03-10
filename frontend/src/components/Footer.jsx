@@ -31,6 +31,12 @@ const Footer = () => {
               <MessageCircle size={22} />
             </a>
           </div>
+          <div className="mt-8 text-gray-400 text-[10px] uppercase tracking-widest leading-relaxed border-t border-gray-800 pt-6">
+            <p className="font-bold text-antique-gold mb-2">Visit Our Atelier</p>
+            <p className="mb-1">Minnaram Designer, Pattom</p>
+            <p className="mb-1">Near SUT Hospital, Thiruvananthapuram</p>
+            <p>Kerala, 695004</p>
+          </div>
         </div>
         <div>
           <h4 className="text-sm uppercase tracking-widest mb-6 text-antique-gold font-bold">The Treasury</h4>

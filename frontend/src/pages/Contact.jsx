@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Instagram, MessageCircle, Phone, MapPin, Mail, Clock } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -30,41 +31,77 @@ const Contact = () => {
       <main className="flex-grow py-20 px-6 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16">
         {/* Left Column - Contact Info */}
         <div className="flex flex-col justify-center">
-          <h2 className="text-4xl font-serif text-antique-dark mb-4">Get in touch</h2>
+          <h2 className="text-4xl font-serif text-antique-dark mb-4 italic">Get in touch</h2>
           <p className="text-antique-brown font-light leading-relaxed mb-10 max-w-md">
             We value the connection with our community and are here to assist in any way we can. Feel free to reach out through the following channels:
           </p>
           
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-sm uppercase tracking-widest text-antique-gold font-bold mb-2">Visit Our Atelier</h3>
-              <p className="text-antique-brown font-light leading-relaxed">
-                <a 
-                  href="https://maps.app.goo.gl/MKobPZS5BczRycKk7" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-antique-gold transition-colors hover:underline"
-                >
-                  View our location on Google Maps
-                </a>
-              </p>
+          <div className="space-y-10">
+            <div className="flex items-start gap-5">
+              <MapPin className="w-6 h-6 text-antique-gold mt-1 flex-shrink-0" />
+              <div className="flex flex-col">
+                <h3 className="text-sm uppercase tracking-widest text-antique-gold font-bold mb-3">The Atelier</h3>
+                <p className="text-antique-brown font-light leading-relaxed mb-4">
+                  Minnaram Designer, Pattom,<br />
+                  Kerala State Housing Board Building, First Floor,<br />
+                  Near SUT Hospital, Thiruvananthapuram, 695004<br />
+                  <span className="text-[11px] italic opacity-80">Parking available at Vrindavan Gardens</span>
+                </p>
+                
+                {/* Social & Map Action Icons below address */}
+                <div className="flex items-center gap-6 mt-2">
+                  <a 
+                    href="https://maps.app.goo.gl/MKobPZS5BczRycKk7" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-full bg-antique-gold/10 text-antique-gold hover:bg-antique-gold hover:text-white transition-all duration-300"
+                    title="Google Maps"
+                  >
+                    <MapPin className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="https://instagram.com/minnaramboutique" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-full bg-antique-gold/10 text-antique-gold hover:bg-antique-gold hover:text-white transition-all duration-300"
+                    title="Instagram"
+                  >
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                  <a 
+                    href="https://wa.me/917306793976" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-full bg-antique-gold/10 text-antique-gold hover:bg-antique-gold hover:text-white transition-all duration-300"
+                    title="WhatsApp"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
             </div>
             
-            <div>
-              <h3 className="text-sm uppercase tracking-widest text-antique-gold font-bold mb-2">Direct Contact</h3>
-              <p className="text-antique-brown font-light leading-relaxed">
-                concierge@minnaramboutique.com<br />
-                <a href="tel:+917306793976" className="hover:text-antique-gold transition-colors">7306793976</a>
-              </p>
+            <div className="flex items-start gap-5 border-t border-antique-gold/10 pt-8">
+              <Mail className="w-5 h-5 text-antique-gold mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="text-sm uppercase tracking-widest text-antique-gold font-bold mb-2">Inquiries</h3>
+                <p className="text-antique-brown font-light leading-relaxed">
+                  concierge@minnaramboutique.com<br />
+                  <a href="tel:+917306793976" className="hover:text-antique-gold transition-colors font-medium">+91 73067 93976</a>
+                </p>
+              </div>
             </div>
-            
-            <div>
-              <h3 className="text-sm uppercase tracking-widest text-antique-gold font-bold mb-2">Hours of Operation</h3>
-              <p className="text-antique-brown font-light leading-relaxed">
-                Monday - Friday: 10:00 AM - 7:00 PM<br />
-                Saturday: 11:00 AM - 6:00 PM<br />
-                Sunday: Private Appointments Only
-              </p>
+
+            <div className="flex items-start gap-5 border-t border-antique-gold/10 pt-8">
+              <Clock className="w-5 h-5 text-antique-gold mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="text-sm uppercase tracking-widest text-antique-gold font-bold mb-2">The Journal Hours</h3>
+                <p className="text-antique-brown font-light leading-relaxed">
+                  Monday - Friday: 10:00 AM - 7:00 PM<br />
+                  Saturday: 11:00 AM - 6:00 PM<br />
+                  <span className="italic">Sunday: Private Appointments Only</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
