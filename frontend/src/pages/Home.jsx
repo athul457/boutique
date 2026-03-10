@@ -16,32 +16,51 @@ const Home = () => {
   const { hash } = useLocation();
 
   useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    const revealElements = document.querySelectorAll('.reveal-up');
+    revealElements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (hash) {
-      // Find the element via the hash, minus the '#' character
       const element = document.getElementById(hash.replace('#', ''));
       if (element) {
-        // Small timeout to ensure the page has drawn components
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       }
     } else {
-      window.scrollTo(0, 0); // Scroll to top if no hash
+      window.scrollTo(0, 0);
     }
   }, [hash]);
 
   return (
-    <div className="min-h-screen bg-antique-white text-antique-dark font-sans">
+    <div className="min-h-screen bg-antique-white text-antique-dark font-sans selection:bg-antique-gold selection:text-antique-white">
       <Navbar />
       <Hero />
-      <FeaturedCollection />
-      <PromoCard />
-      <NewArrivals />
-      <Customization />
-      {/* <FestiveCollection /> */}
-      <CategoryShowcase />
-      <Testimonials />
-      <Philosophy />
+      
+      <div className="reveal-up"><FeaturedCollection /></div>
+      <div className="reveal-up"><PromoCard /></div>
+      <div className="reveal-up"><NewArrivals /></div>
+      <div className="reveal-up"><Customization /></div>
+      <div className="reveal-up"><CategoryShowcase /></div>
+      <div className="reveal-up"><Testimonials /></div>
+      <div className="reveal-up"><Philosophy /></div>
+      
       <Footer />
     </div>
   );

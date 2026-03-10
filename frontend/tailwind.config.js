@@ -17,7 +17,7 @@ export default {
       },
       fontFamily: {
         serif: ['"Playfair Display"', '"Playwrite NZ Basic"', '"Dancing Script"', 'Georgia', 'serif'],
-        sans: ['"Outfit"', '"Google Sans"', '"Inter"', '"Raleway"', 'system-ui', 'sans-serif'],
+        sans: ['"Inter"', '"Outfit"', '"Google Sans"', '"Raleway"', 'system-ui', 'sans-serif'],
         mono: ['"Roboto Mono"', 'monospace'],
       }
     },

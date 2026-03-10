@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, ShoppingBag, Heart, User, Menu, X } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,7 +9,16 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -37,7 +46,9 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="absolute top-0 w-full z-50 px-4 md:px-12 py-6 flex justify-between items-center bg-transparent">
+      <nav className={`absolute top-0 w-full z-50 px-4 md:px-12 py-6 flex justify-between items-center transition-all duration-500 ${
+        isScrolled ? 'backdrop-blur-sm bg-black/5' : 'bg-transparent'
+      }`}>
         {/* Left side: Logo & Navigation */}
         <div className="flex items-center">
           {/* Mobile menu icon */}
