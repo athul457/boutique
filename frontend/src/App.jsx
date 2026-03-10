@@ -1,0 +1,26 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import Collections from './pages/Collections';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import { ShopProvider } from './context/ShopContext';
+
+function App() {
+  return (
+    <Router>
+      <ShopProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/collections" element={<Collections />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      </ShopProvider>
+    </Router>
+  );
+}
+
+export default App;
