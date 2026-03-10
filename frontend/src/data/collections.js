@@ -9,7 +9,9 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 95,
     newest: '2023-10-01',
-    image: 'https://images.pexels.com/photos/16396443/pexels-photo-16396443.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/16396443/pexels-photo-16396443.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'An exquisite silk gown featuring intricate hand-stitched details and a timeless silhouette. Perfect for the most sophisticated occasions.',
+    details: ['100% Pure Silk', 'Hand-embroidered bodice', 'Floor-length classic fit', 'Invisible back zipper']
   },
   {
     id: 2,
@@ -21,7 +23,9 @@ export const collections = [
     sizes: ['M', 'L', 'XL'],
     popularity: 88,
     newest: '2023-09-15',
-    image: 'https://images.pexels.com/photos/2113277/pexels-photo-2113277.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/2113277/pexels-photo-2113277.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A luxurious gold evening trench coat that blends heritage styling with modern flair. A statement piece for any wardrobe.',
+    details: ['Premium Metallic Finish', 'Double-breasted front', 'Belted waist', 'Internal satin lining']
   },
   {
     id: 3,
@@ -33,7 +37,9 @@ export const collections = [
     sizes: ['XS', 'S', 'M'],
     popularity: 92,
     newest: '2023-11-05',
-    image: 'https://images.pexels.com/photos/1376042/pexels-photo-1376042.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/1376042/pexels-photo-1376042.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'An elegant Victorian-inspired blouse with delicate lace inserts and a flattering high collar.',
+    details: ['Cotton-Silk Blend', 'Intricate lace panels', 'Mother-of-pearl buttons', 'Relaxed but tailored fit']
   },
   {
     id: 4,
@@ -45,7 +51,9 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 98,
     newest: '2023-12-01',
-    image: 'https://images.pexels.com/photos/8887111/pexels-photo-8887111.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/8887111/pexels-photo-8887111.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A stunning maxi dress woven with golden threads, designed to capture the light and attention at any party.',
+    details: ['Golden Thread Embroidery', 'Flowing floor-length skirt', 'Halter neck design', 'Delicate gold trim']
   },
   {
     id: 5,
@@ -57,7 +65,9 @@ export const collections = [
     sizes: ['M', 'L'],
     popularity: 85,
     newest: '2023-08-20',
-    image: 'https://images.pexels.com/photos/8489775/pexels-photo-8489775.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/8489775/pexels-photo-8489775.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A deep black velvet dress that exudes luxury and mystery. Perfect for evening galas and formal events.',
+    details: ['Premium Crushed Velvet', 'Asymmetric hemline', 'Plunging neckline', 'Soft interior lining']
   },
   {
     id: 6,
@@ -69,7 +79,9 @@ export const collections = [
     sizes: ['XS', 'S', 'M'],
     popularity: 76,
     newest: '2023-10-15',
-    image: 'https://images.pexels.com/photos/1322993/pexels-photo-1322993.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/1322993/pexels-photo-1322993.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A liquid-silk satin skirt in a rich bronze tone. Versatile enough for both casual afternoon teas and evening dinners.',
+    details: ['100% Satin Silk', 'Elasticated hidden waistband', 'Midi length', 'Fluid draped silhouette']
   },
   {
     id: 7,
@@ -81,7 +93,9 @@ export const collections = [
     sizes: ['S', 'M', 'L', 'XL'],
     popularity: 89,
     newest: '2023-11-20',
-    image: 'https://images.pexels.com/photos/16375797/pexels-photo-16375797.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/16375797/pexels-photo-16375797.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A classic ivory cardigan adorned with hand-stitched pearl buttons. A soft and warm addition to your ensemble.',
+    details: ['Fine Wool Blend', 'Hand-applied faux pearls', 'Ribbed cuffs and hem', 'Soft-touch finish']
   },
   {
     id: 8,
@@ -93,7 +107,9 @@ export const collections = [
     sizes: ['M', 'L'],
     popularity: 94,
     newest: '2023-09-05',
-    image: 'https://images.pexels.com/photos/6593898/pexels-photo-6593898.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/6593898/pexels-photo-6593898.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A majestic brocade jacket with gold patterns, inspired by royal heritage designs.',
+    details: ['Heavy Brocade Fabric', 'Metallic gold weaving', 'Structured shoulders', 'Full satin lining']
   },
   {
     id: 9,
@@ -105,7 +121,9 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 91,
     newest: '2023-10-25',
-    image: 'https://images.pexels.com/photos/1229414/pexels-photo-1229414.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/1229414/pexels-photo-1229414.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A minimalist yet opulent slip dress in antique gold. Effortlessly elegant for modern bridal settings.',
+    details: ['Heavyweight Satin', 'Adjustable straps', 'Bias-cut for a flattering drape', 'Subtle side slit']
   },
   {
     id: 10,
@@ -117,7 +135,9 @@ export const collections = [
     sizes: ['XS', 'S', 'M'],
     popularity: 82,
     newest: '2024-02-15',
-    image: 'https://images.pexels.com/photos/8750027/pexels-photo-8750027.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/8750027/pexels-photo-8750027.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A vibrant ember red dress with a playful flare, designed for dancing and celebration.',
+    details: ['Breathable Chiffon', 'Full-circle flare skirt', 'V-neckline', 'Includes matching belt']
   },
   {
     id: 11,
@@ -129,7 +149,9 @@ export const collections = [
     sizes: ['S', 'M', 'L', 'XL'],
     popularity: 87,
     newest: '2024-02-10',
-    image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=800',
+    description: 'A light and airy champagne-colored blouse with romantic ruffles. Perfect for sunny afternoon events.',
+    details: ['Lightweight Georgette', 'Layered ruffle sleeves', 'Self-tie neck bow', 'Relaxed silhouette']
   },
   {
     id: 12,
@@ -141,7 +163,9 @@ export const collections = [
     sizes: ['M', 'L', 'XL'],
     popularity: 79,
     newest: '2023-12-05',
-    image: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&q=80&w=800',
+    description: 'Tailored trousers in a deep emerald green, offering a bold yet sophisticated look for any casual occasion.',
+    details: ['High-waisted fit', 'Premium cotton twill', 'Pressed crease detail', 'Functional side pockets']
   },
   {
     id: 13,
@@ -153,7 +177,9 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 93,
     newest: '2023-09-22',
-    image: 'https://images.pexels.com/photos/19303743/pexels-photo-19303743.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/19303743/pexels-photo-19303743.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A timeless tweed blazer with heritage patterns. A versatile piece that adds instant class to any outfit.',
+    details: ['Italian Tweed Fabric', 'Structured silhouette', 'Antique-look buttons', 'Fully lined']
   },
   {
     id: 14,
@@ -165,7 +191,9 @@ export const collections = [
     sizes: ['One Size'],
     popularity: 97,
     newest: '2024-02-05',
-    image: 'https://images.pexels.com/photos/990675/pexels-photo-990675.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/990675/pexels-photo-990675.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A lustrous silk scarf with gold accents. A perfect accessory to elevate any party look.',
+    details: ['100% Pure Silk', 'Hand-rolled edges', 'Versatile styling options', 'Gold-leaf print']
   },
   {
     id: 15,
@@ -177,7 +205,9 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 86,
     newest: '2024-02-01',
-    image: 'https://images.pexels.com/photos/9418537/pexels-photo-9418537.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/9418537/pexels-photo-9418537.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A graceful onyx black evening gown, designed for the most formal and elegant evenings.',
+    details: ['Premium Crepe Fabric', 'Floor-length with train', 'Built-in support', 'Sophisticated drape']
   },
   {
     id: 16,
@@ -189,7 +219,9 @@ export const collections = [
     sizes: ['One Size'],
     popularity: 90,
     newest: '2023-12-10',
-    image: 'https://images.pexels.com/photos/5965177/pexels-photo-5965177.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/5965177/pexels-photo-5965177.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A sparkling crystalline tiara for a truly royal bridal look. Adorned with premium crystals.',
+    details: ['Hand-set crystals', 'Flexible silver-plated base', 'Lightweight for all-day wear', 'Classic bridal design']
   },
   {
     id: 17,
@@ -201,7 +233,9 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 92,
     newest: '2024-01-05',
-    image: 'https://images.pexels.com/photos/1457977/pexels-photo-1457977.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/1457977/pexels-photo-1457977.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A vintage-style silk gown in pure white, offering a classic and timeless bridal silhouette.',
+    details: ['Heirloom Silk Satin', 'Vintage-inspired bodice', 'Graceful A-line skirt', 'Delicate pearl trim']
   },
   {
     id: 18,
@@ -213,7 +247,9 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 88,
     newest: '2024-01-10',
-    image: 'https://images.pexels.com/photos/5717644/pexels-photo-5717644.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/5717644/pexels-photo-5717644.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'An elegant gold dress for any party, designed with a focus on grace and sophistication.',
+    details: ['Metallic Gold Fabric', 'Flattering waist detailing', 'Mid-length cut', 'Hidden back zipper']
   },
   {
     id: 19,
@@ -225,7 +261,9 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 85,
     newest: '2024-01-15',
-    image: 'https://images.pexels.com/photos/8403754/pexels-photo-8403754.png?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/8403754/pexels-photo-8403754.png?auto=format&fit=crop&q=80&w=800',
+    description: 'A charming white dress featuring antique lace detailing, perfect for relaxed yet refined style.',
+    details: ['Soft Cotton Fabric', 'Antique lace inserts', 'Relaxed fit', 'Button-up front']
   },
   {
     id: 20,
@@ -237,6 +275,8 @@ export const collections = [
     sizes: ['S', 'M', 'L'],
     popularity: 80,
     newest: '2024-01-20',
-    image: 'https://images.pexels.com/photos/4690501/pexels-photo-4690501.jpeg?auto=format&fit=crop&q=80&w=800'
+    image: 'https://images.pexels.com/photos/4690501/pexels-photo-4690501.jpeg?auto=format&fit=crop&q=80&w=800',
+    description: 'A chic midi skirt in a bronzed finish, perfect for a contemporary casual look with a touch of shimmer.',
+    details: ['Coated Twill Fabric', 'Asymmetrical hemline', 'High-waited design', 'Hidden side zip']
   }
 ];

@@ -5,6 +5,7 @@ import Contact from './pages/Contact';
 import Collections from './pages/Collections';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import ProductDetails from './pages/ProductDetails';
 import WhatsAppFloating from './components/WhatsAppFloating';
 import { ShopProvider } from './context/ShopContext';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
         <WhatsAppFloating />
       </ShopProvider>

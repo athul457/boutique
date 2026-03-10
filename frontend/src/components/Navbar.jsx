@@ -45,7 +45,7 @@ const Navbar = () => {
           </button>
           
           {/* Logo */}
-          <Link to="/" className="text-lg font-serif tracking-widest uppercase cursor-pointer text-antique-gold font-bold mr-4 md:mr-8 leading-tight">
+          <Link to="/" className="text-lg font-serif tracking-widest uppercase cursor-pointer text-antique-gold font-bold mr-4 md:mr-32 leading-tight">
             Minnaram <br className="hidden sm:block" />Boutique
           </Link>
 

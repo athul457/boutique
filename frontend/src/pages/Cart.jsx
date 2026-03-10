@@ -18,12 +18,12 @@ const Cart = () => {
       <Navbar />
       
       {/* Page Header */}
-      <div className="relative h-[40vh] min-h-[300px] flex items-center justify-center pt-20">
+      <div className="relative h-[60vh] min-h-[300px] flex items-center justify-center pt-20">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=format&fit=crop&q=80&w=2000" 
+            src="https://images.pexels.com/photos/356170/pexels-photo-356170.jpeg?auto=format&fit=crop&q=80&w=2000" 
             alt="Shopping Bag Background" 
-            className="w-full h-full object-cover object-center sepia-[.2]"
+            className="w-full h-full object-cover object-top sepia-[.3]"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
