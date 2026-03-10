@@ -7,14 +7,15 @@ const Hero = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=2000" 
+          // src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=2000" 
+          src="/heroImage.png" 
           alt="Golden Architecture" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
       
-      <div className="relative z-10 text-center px-4 max-w-4xl pt-20">
+      <div className="relative z-10 px-4 max-w-4xl pt-20">
         <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight drop-shadow-lg">
           Rediscover <br/> <span className="text-antique-gold italic font-light">Antique</span> Elegance
         </h1>

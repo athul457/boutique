@@ -8,6 +8,7 @@ import FestiveCollection from '../components/FestiveCollection';
 import CategoryShowcase from '../components/CategoryShowcase';
 import Testimonials from '../components/Testimonials';
 import Philosophy from '../components/Philosophy';
+import Customization from '../components/Customization';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
       <FeaturedCollection />
       <PromoCard />
       <NewArrivals />
+      <Customization />
       {/* <FestiveCollection /> */}
       <CategoryShowcase />
       <Testimonials />
