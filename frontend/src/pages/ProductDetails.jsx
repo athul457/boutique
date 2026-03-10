@@ -139,31 +139,39 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              {/* Quantity and Add to Cart */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex items-center border border-antique-gold/30 rounded-sm overflow-hidden h-14 bg-white">
-                  <button 
-                    onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                    className="w-12 h-full flex items-center justify-center hover:bg-antique-gold/5 transition-colors text-antique-brown"
-                  >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <span className="w-12 text-center text-sm font-bold border-x border-antique-gold/10">{quantity}</span>
-                  <button 
-                    onClick={() => setQuantity(q => q + 1)}
-                    className="w-12 h-full flex items-center justify-center hover:bg-antique-gold/5 transition-colors text-antique-brown"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
+                {/* Quantity and Add to Cart */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex items-center border border-antique-gold/30 rounded-sm overflow-hidden h-14 bg-white">
+                    <button 
+                      onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                      className="w-12 h-full flex items-center justify-center hover:bg-antique-gold/5 transition-colors text-antique-brown"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="w-12 text-center text-sm font-bold border-x border-antique-gold/10">{quantity}</span>
+                    <button 
+                      onClick={() => setQuantity(q => q + 1)}
+                      className="w-12 h-full flex items-center justify-center hover:bg-antique-gold/5 transition-colors text-antique-brown"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+                  
+                  <div className="flex flex-col flex-grow gap-3">
+                    <button 
+                      onClick={() => addToCart({ ...product, selectedSize, selectedColor, quantity })}
+                      className="w-full bg-antique-dark text-antique-white h-14 uppercase tracking-[0.3em] text-xs font-bold hover:bg-antique-gold hover:text-white transition-all duration-500 shadow-xl active:scale-[0.98]"
+                    >
+                      Induct into Wardrobe
+                    </button>
+                    <Link 
+                      to="/cart"
+                      className="w-full border border-antique-dark text-antique-dark h-12 flex items-center justify-center uppercase tracking-widest text-[10px] font-bold hover:bg-antique-dark hover:text-white transition-all duration-300"
+                    >
+                      View Shopping Bag
+                    </Link>
+                  </div>
                 </div>
-                
-                <button 
-                  onClick={() => addToCart({ ...product, selectedSize, selectedColor, quantity })}
-                  className="flex-grow bg-antique-dark text-antique-white h-14 uppercase tracking-[0.3em] text-xs font-bold hover:bg-antique-gold hover:text-white transition-all duration-500 shadow-xl active:scale-[0.98]"
-                >
-                  Induct into Wardrobe
-                </button>
-              </div>
             </div>
 
             {/* Product Tabs */}

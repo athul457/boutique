@@ -28,10 +28,11 @@ const Navbar = () => {
       )
     : [];
 
-  const handleSearchResultClick = () => {
+  const handleSearchResultClick = (id) => {
     setSearchQuery('');
     setIsMobileSearchOpen(false);
-    navigate('/collections');
+    setIsMobileMenuOpen(false);
+    navigate(`/product/${id}`);
   };
 
   return (
@@ -79,7 +80,7 @@ const Navbar = () => {
                     {searchResults.slice(0, 6).map(item => (
                       <div 
                         key={item.id} 
-                        onClick={handleSearchResultClick}
+                        onClick={() => handleSearchResultClick(item.id)}
                         className="flex items-center gap-4 px-4 py-3 hover:bg-antique-gold/10 transition-colors border-b border-antique-gold/10 last:border-0 cursor-pointer"
                       >
                         <img src={item.image} alt={item.name} className="w-12 h-12 object-cover rounded-sm sepia-[.2]" />
@@ -136,7 +137,7 @@ const Navbar = () => {
                   {searchResults.slice(0, 5).map(item => (
                     <div 
                       key={item.id} 
-                      onClick={handleSearchResultClick}
+                      onClick={() => handleSearchResultClick(item.id)}
                       className="flex items-center gap-4 px-4 py-3 hover:bg-antique-gold/10 transition-colors border-b border-antique-gold/10 last:border-0 cursor-pointer"
                     >
                       <img src={item.image} alt={item.name} className="w-10 h-10 object-cover rounded-sm sepia-[.2]" />
