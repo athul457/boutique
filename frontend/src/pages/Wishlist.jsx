@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useShop } from '../context/ShopContext';
 import { Heart, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,17 @@ import Footer from '../components/Footer';
 
 const Wishlist = () => {
   const { wishlist, removeFromWishlist, addToCart } = useShop();
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const scrollPosition = scrollRef.current.scrollLeft;
+      const itemWidth = scrollRef.current.clientWidth;
+      const newIndex = Math.round(scrollPosition / itemWidth);
+      setActiveIndex(newIndex);
+    }
+  };
 
   return (
     <div className="bg-antique-white min-h-screen flex flex-col">
@@ -45,47 +56,65 @@ const Wishlist = () => {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {wishlist.map((item) => (
-              <div key={item.id} className="group bg-white border border-antique-gold/10 rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
-                <div className="relative aspect-[3/4] overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 sepia-[.2]" 
-                  />
-                  <button 
-                    onClick={() => removeFromWishlist(item.id)}
-                    className="absolute top-4 right-4 bg-white/90 p-2 text-red-500 hover:bg-red-500 hover:text-white transition-colors shadow-md rounded-full"
-                    title="Remove from wishlist"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h3 className="text-lg font-serif text-antique-dark">{item.name}</h3>
-                      <p className="text-antique-gold font-light tracking-wider italic">{item.price}</p>
+          <div className="flex flex-col">
+            <div 
+              ref={scrollRef}
+              onScroll={handleScroll}
+              className="flex overflow-x-auto md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 snap-x snap-mandatory hide-scroll-bar -mx-6 px-6 md:mx-0 md:px-0"
+            >
+              {wishlist.map((item) => (
+                <div key={item.id} className="min-w-full md:min-w-0 snap-center">
+                  <div className="group bg-white border border-antique-gold/10 rounded-sm overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 flex flex-col h-full">
+                    <div className="relative aspect-[3/4] overflow-hidden">
+                      <img 
+                        src={item.image} 
+                        alt={item.name} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 sepia-[.2]" 
+                      />
+                      <button 
+                        onClick={() => removeFromWishlist(item.id)}
+                        className="absolute top-3 right-3 bg-white/90 p-1.5 text-red-500 hover:bg-red-500 hover:text-white transition-colors shadow-md rounded-full z-10"
+                        title="Remove from wishlist"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    <div className="p-4 flex flex-col flex-grow">
+                      <div className="mb-3">
+                        <h3 className="text-sm font-serif text-antique-dark line-clamp-1">{item.name}</h3>
+                        <p className="text-antique-gold text-xs font-light tracking-wider italic">{item.price}</p>
+                      </div>
+                      <div className="mt-auto flex flex-col gap-2">
+                        <Link 
+                          to={`/product/${item.id}`}
+                          className="w-full text-center text-[9px] uppercase tracking-widest font-bold border border-antique-gold/30 py-2 hover:bg-antique-gold/5 transition-colors"
+                        >
+                          View Details
+                        </Link>
+                        <button 
+                          onClick={() => addToCart({ ...item, selectedSize: item.sizes[0], selectedColor: item.color })}
+                          className="w-full bg-antique-dark text-antique-white text-[9px] uppercase tracking-widest font-bold py-2 hover:bg-antique-gold transition-colors"
+                        >
+                          Add to Bag
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <div className="mt-6 flex gap-3">
-                    <Link 
-                      to={`/product/${item.id}`}
-                      className="flex-grow text-center text-[10px] uppercase tracking-widest font-bold border border-antique-gold/30 py-3 hover:bg-white transition-colors"
-                    >
-                      View Details
-                    </Link>
-                    <button 
-                      onClick={() => addToCart({ ...item, selectedSize: item.sizes[0], selectedColor: item.color })}
-                      className="flex-grow bg-antique-dark text-antique-white text-[10px] uppercase tracking-widest font-bold py-3 hover:bg-antique-gold transition-colors"
-                    >
-                      Add to Bag
-                    </button>
-                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Pagination dots (Mobile only) */}
+            <div className="flex justify-center items-center space-x-2 mt-4 md:hidden">
+              {wishlist.map((_, index) => (
+                <div 
+                  key={index}
+                  className={`transition-all duration-300 rounded-full ${
+                    index === activeIndex ? 'w-6 h-1.5 bg-antique-gold' : 'w-1.5 h-1.5 bg-antique-gold/30'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         )}
       </main>
