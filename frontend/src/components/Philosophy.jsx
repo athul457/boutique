@@ -32,7 +32,7 @@ const Philosophy = () => {
           
           {/* Accent Graphic */}
           <div className="absolute top-2 right-10 text-9xl font-serif text-antique-gold/20 select-none z-10 font-bold leading-none italic pointer-events-none">
-            A
+            M
           </div>
         </div>
 
@@ -52,7 +52,7 @@ const Philosophy = () => {
             <span className="absolute -top-12 -left-6 text-8xl text-antique-gold/10 font-serif leading-none select-none">"</span>
             
             <p className="text-antique-dark/80 font-light text-lg md:text-xl leading-relaxed mb-6 first-letter:text-6xl first-letter:font-serif first-letter:text-antique-gold first-letter:float-left first-letter:mr-3 first-letter:-mt-1">
-              We find profound beauty in the whispers of history. At Aura Boutique, every piece curated is a deliberate nod to the unparalleled craftsmanship of the past, tailored impeccably for the discerning taste of the modern collector.
+              We find profound beauty in the whispers of history. At Minnaram Boutique, every piece curated is a deliberate nod to the unparalleled craftsmanship of the past, tailored impeccably for the discerning taste of the modern collector.
             </p>
             
             <p className="text-antique-dark/80 font-light text-lg md:text-xl leading-relaxed mb-10">

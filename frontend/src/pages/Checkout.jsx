@@ -29,7 +29,7 @@ const Checkout = () => {
       <div className="bg-antique-white min-h-screen flex flex-col justify-center items-center px-6">
         <CheckCircle className="w-24 h-24 text-antique-gold mb-8 animate-bounce" />
         <h1 className="text-4xl md:text-5xl font-serif text-antique-dark mb-4 text-center">Order Placed Successfully!</h1>
-        <p className="text-antique-brown text-xl mb-12 italic text-center">Thank you for choosing Aura. Your treasures will arrive soon.</p>
+        <p className="text-antique-brown text-xl mb-12 italic text-center">Thank you for choosing Minnaram Boutique. Your treasures will arrive soon.</p>
         <Link 
           to="/" 
           className="bg-antique-dark text-antique-white px-10 py-4 uppercase tracking-widest text-sm font-bold hover:bg-antique-gold transition-colors shadow-xl"

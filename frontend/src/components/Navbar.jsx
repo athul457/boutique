@@ -14,8 +14,8 @@ const Navbar = () => {
         <Menu className="md:hidden w-6 h-6 cursor-pointer hover:text-antique-gold transition-colors text-white mr-4" />
         
         {/* Logo */}
-        <Link to="/" className="text-3xl font-serif tracking-widest uppercase cursor-pointer text-antique-gold font-bold mr-8">
-          Aura
+        <Link to="/" className="text-lg font-serif tracking-widest uppercase cursor-pointer text-antique-gold font-bold mr-8">
+          Minnaram 
         </Link>
 
         {/* Desktop Navigation Links */}

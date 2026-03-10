@@ -9,9 +9,9 @@ const Hero = () => {
         <img 
           src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&q=80&w=2000" 
           alt="Golden Architecture" 
-          className="w-full h-full object-cover opacity-90 sepia-[.3]"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-antique-white/80"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
       </div>
       
       <div className="relative z-10 text-center px-4 max-w-4xl pt-20">

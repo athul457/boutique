@@ -11,7 +11,7 @@ const Testimonials = () => {
             Voices of Elegance
           </h2>
           <p className="text-antique-brown font-light italic max-w-2xl mx-auto text-lg opacity-90">
-            Read what our cherished clients have to say about their Aura Boutique experience.
+            Read what our cherished clients have to say about their Minnaram Boutique experience.
           </p>
           <div className="flex justify-center mt-6">
             <span className="h-px w-24 bg-antique-gold/50 block"></span>

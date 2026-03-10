@@ -53,7 +53,7 @@ const Contact = () => {
             <div>
               <h3 className="text-sm uppercase tracking-widest text-antique-gold font-bold mb-2">Direct Contact</h3>
               <p className="text-antique-brown font-light leading-relaxed">
-                concierge@auraboutique.com<br />
+                concierge@minnaramboutique.com<br />
                 <a href="tel:+917306793976" className="hover:text-antique-gold transition-colors">7306793976</a>
               </p>
             </div>
